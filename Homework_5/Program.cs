@@ -11,29 +11,26 @@ namespace Homework_5
             string upperCase = lowerCase.ToUpper();
             var upperCaseArray = upperCase.ToArray();
 
-            Console.WriteLine("В случае шифровки сообщения введите \"1\"\nВ случае расшифровки сообщения введите \"2\"");
-            string task = Console.ReadLine();
+            string task = "";
 
-            while (task != "1" & task != "2")
+            while (task != "1" && task != "2")
             {
                 Console.WriteLine("В случае шифровки сообщения введите \"1\"\nВ случае расшифровки сообщения введите \"2\"");
                 task = Console.ReadLine();
             }
 
-            Console.WriteLine("Введите ключ шифрования\n(число, на сколько символов сдвигать буквы)");
-            string number = Console.ReadLine();
-            bool result = int.TryParse(number, out var key);
+            string number;
+            bool result = false;
+            int key = 0;
 
-            while (result == false)
+            while (result == false) 
             {
                 Console.WriteLine("Введите ключ шифрования\n(число, на сколько символов сдвигать буквы)");
                 number = Console.ReadLine();
+                result = int.TryParse(number, out key);
             }
 
-            if (task == "2")
-            {
-                key = key * -1;
-            }
+            key = (task == "2") ? key * -1 : key;
 
             Console.WriteLine("Введите сообщение русскими буквами");
             string message = Console.ReadLine();
@@ -43,7 +40,7 @@ namespace Homework_5
             {
                 bool isLetter = Char.IsLetter(message, i);
 
-                if (isLetter == false)
+                if (!isLetter)
                 {
                     continue;
                 }
