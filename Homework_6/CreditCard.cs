@@ -18,18 +18,16 @@ namespace Homework_6
             this.balance = balance;
         }
 
-        public CreditCard() { }
 
         public void DepositMoney()
         {
             double deposit = 0;
-            string sumOfDeposit;
             bool result = false;
 
             while (result == false)
             {
                 Console.WriteLine("Введите числовое значение суммы пополнения, руб.\n");
-                sumOfDeposit = Console.ReadLine();
+                string sumOfDeposit = Console.ReadLine();
                 Console.WriteLine();
                 result = double.TryParse(sumOfDeposit, out deposit);
             }
@@ -39,13 +37,12 @@ namespace Homework_6
         public void CashOutMoney()
         {
             double cash = 0;
-            string sumOfCash;
             bool result = false;
 
             while (result == false)
             {
                 Console.WriteLine("Введите числовое значение суммы списания, руб.\n");
-                sumOfCash = Console.ReadLine();
+                string sumOfCash = Console.ReadLine();
                 Console.WriteLine();
                 result = double.TryParse(sumOfCash, out cash);
 
@@ -67,13 +64,12 @@ namespace Homework_6
         public void TransferMoney(CreditCard targetCard)
         {
             double amount = 0;
-            string sumOfTransfer;
             bool result = false;
 
             while (result == false)
             {
                 Console.WriteLine("Введите числовое значение суммы перевода, руб.\n");
-                sumOfTransfer = Console.ReadLine();
+                string sumOfTransfer = Console.ReadLine();
                 Console.WriteLine();
                 result = double.TryParse(sumOfTransfer, out amount);
 
