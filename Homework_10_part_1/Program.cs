@@ -2,8 +2,6 @@
 {
     internal class Program
     {
-        delegate bool NumbersFilter(int number);
-
         static void Main(string[] args)
         {
             List<int> numbers = new List<int>() { 1, 53, 22, 84, 2, 7, 10 };
@@ -19,7 +17,7 @@
             string filterType = Console.ReadLine();
             Console.WriteLine();
 
-            NumbersFilter filter;
+            Predicate<int> filter;
 
             switch (filterType)
             {
@@ -44,7 +42,7 @@
             Console.WriteLine(string.Join(", ", numbers));
         }
 
-        static void Filter(NumbersFilter filter, List<int> numbers)
+        static void Filter(Predicate<int> filter, List<int> numbers)
         {
             numbers.RemoveAll(n => filter(n));
         }
