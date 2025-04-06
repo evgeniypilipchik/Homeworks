@@ -1,6 +1,6 @@
 ﻿namespace Homework_11
 {
-    internal class ComparablePair<T1, T2> where T1 : IComparable<T1> where T2 : IComparable<T2>
+    internal class ComparablePair<T1, T2> : IComparable<ComparablePair<T1, T2>> where T1 : IComparable<T1> where T2 : IComparable<T2>
     {
         public T1 T1Value { get; }
 
