@@ -2,14 +2,11 @@
 {
     internal class OnlineStore
     {
+        public List<Order> Orders;
 
-        public string OrderName;
-        public int OrderId;
-
-        public OnlineStore(string name, int id)
+        public OnlineStore(List<Order> orders)
         {
-            OrderName = name;
-            OrderId = id;
+            Orders = orders;
         }
 
         public delegate void OrderHandler(int orderId);
@@ -20,5 +17,9 @@
             Console.WriteLine($"Ваш заказ {orderId}\n");
             OnOrderProcessed?.Invoke(orderId);
         }
+
+        public void NotifyClient(int orderId) => Console.WriteLine($"Ваш заказ {orderId} готов!");
+
+        public void NotifyManager(int orderId) => Console.WriteLine($"Заказ {orderId} обработан.");
     }
 }
