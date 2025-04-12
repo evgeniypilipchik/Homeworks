@@ -53,6 +53,22 @@ namespace Homework_13
             string json = JsonSerializer.Serialize(orders, options);
             Console.WriteLine(json);
             File.WriteAllText("orders.json", json);
+            string json2 = File.ReadAllText("orders.json");
+            List<Order> orders2 = JsonSerializer.Deserialize<List<Order>>(json2);
+
+            for (int i = 0; i < orders2.Count; i++)
+            {
+                Console.WriteLine("OrderId: " + orders2[i].OrderId);
+                Console.WriteLine("Data: " + orders2[i].Data);
+
+                for (int j = 0; j < orders2[i].Products.Count; j++)
+                {
+                    Console.WriteLine("ProductId: " + orders2[i].Products[j].Id);
+                    Console.WriteLine("ProductName: " + orders2[i].Products[j].Name);
+                    Console.WriteLine("ProductPrice: " + orders2[i].Products[j].Price);
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
