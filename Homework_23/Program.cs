@@ -23,8 +23,6 @@ namespace Homework_23
                 reader1.Books.Add(book1);
                 reader2.Books.Add(book2);
 
-                context.Authors.AddRange(author1);
-                context.Books.AddRange(book1, book2);
                 context.Readers.AddRange(reader1, reader2, reader3);
 
                 context.SaveChanges();
