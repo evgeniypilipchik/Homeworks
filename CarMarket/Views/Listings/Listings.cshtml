@@ -1,0 +1,73 @@
+﻿@using CarMarket.Models.Listing
+@model IEnumerable<ListingsViewModel>
+
+@{
+    ViewData["Title"] = "Listings";
+}
+
+<h1>Listings</h1>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create Listing</a>
+    </p>
+}
+
+<div class="price-filter">
+    <form method="get" class="filter-form">
+        <input type="number" name="minPrice" placeholder="Min price ($)" 
+               value="@ViewBag.MinPrice" class="input-simple">
+        <input type="number" name="maxPrice" placeholder="Max price ($)"
+               value="@ViewBag.MaxPrice" class="input-simple">
+        <button type="submit" class="btn-simple">Apply</button>
+        <button type="button" onclick="window.location.href='@Url.Action("Listings")'"class="btn-simple btn-reset">Reset</button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MileAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MileAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

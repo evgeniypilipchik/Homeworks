@@ -1,0 +1,55 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CarMarket.Data.Models
+{
+    public class Listing
+    {
+        public int Id { get; set; }
+
+        [Required]
+        public string Vin { get; set; }
+
+        [Required]
+        public string Brand { get; set; }
+
+        [Required]
+        public string Model { get; set; }
+
+        public int? Year { get; set; }    
+        
+        public int? Generation { get; set; }
+
+        public string? Type { get; set; }
+
+        public string? DriveType { get; set; }
+
+        public string? FuelType { get; set; }
+
+        public double? EngineVolume { get; set; }
+
+        public string? GearType { get; set; }
+
+        public string? Color { get; set; }
+
+        public bool? IsRegistrated { get; set; }
+
+        public bool? IsCrashed { get; set; }
+
+        public bool? IsPledged { get; set; }
+
+        [Required]
+        public int MileAge { get; set; }
+
+        [Required]
+        public int Price { get; set; }
+
+        [Required]
+        public string ApplicationUserId { get; set; }
+
+        [Required]
+        public ApplicationUser ApplicationUser { get; set; }
+
+        public List<FavoriteListing> FavoriteListings { get; set; } = new();
+    }
+}
