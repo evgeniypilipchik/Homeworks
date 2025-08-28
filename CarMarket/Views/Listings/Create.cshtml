@@ -31,7 +31,7 @@
                 <label asp-for="Year" class="control-label"></label>
                 <select asp-for="Year" class="form-control">
                     <option value="">No information</option>
-                    @for (int year = 2025; year >= 1920; year--)
+                    @for (int year = @DateTime.Now.Year; year >= 1920; year--)
                     {
                         <option value="@year">@year</option>
                     }
@@ -42,7 +42,7 @@
                 <label asp-for="Generation" class="control-label"></label>
                 <select asp-for="Generation" class="form-control">
                     <option value="">No information</option>
-                    @for (int generation = 30; generation >= 1; generation--)
+                    @for (int generation = 20; generation >= 1; generation--)
                     {
                         <option value="@generation">@generation</option>
                     }
@@ -143,9 +143,9 @@
                 <span asp-validation-for="IsPledged" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MileAge" class="control-label"></label>
-                <input asp-for="MileAge" class="form-control" />
-                <span asp-validation-for="MileAge" class="text-danger"></span>
+                <label asp-for="Mileage" class="control-label"></label>
+                <input asp-for="Mileage" class="form-control" />
+                <span asp-validation-for="Mileage" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>

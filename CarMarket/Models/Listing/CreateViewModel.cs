@@ -50,10 +50,10 @@ namespace CarMarket.Models.Listing
         [Display(Name = "Is pledged?")]
         public bool? IsPledged { get; set; }
 
-        [Display(Name = "Mile age, km")]
+        [Display(Name = "Mileage, km")]
         [Required(ErrorMessage = "Please enter the car mile age")]
         [Range(0, 1_000_000, ErrorMessage = "The car mile age must be from 0 to 1 000 000 km")]
-        public int MileAge { get; set; }
+        public int Mileage { get; set; }
 
         [Display(Name = "Price, $")]
         [Required(ErrorMessage = "Please enter the car price")]

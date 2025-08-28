@@ -4,7 +4,7 @@ namespace CarMarket.Services.Interfaces
 {
     public interface IListingService
     {
-        Task<List<ListingsViewModel>> GetAllListingsAsync(int? minPrice, int? maxPrice, string? excludeUserId, CancellationToken cancellationToken);
+        Task<List<ListingsViewModel>> GetListingsAsync(IEnumerable<IListingFilter> filters, CancellationToken cancellationToken = default);
         Task<DetailsViewModel> GetListingDetailsAsync(int id, string? currentUserId, CancellationToken cancellationToken);
         Task<DetailsViewModel> GetUserListingDetailsAsync(int id, string userId, CancellationToken cancellationToken);
         Task CreateListingAsync(CreateViewModel model, string userId, CancellationToken cancellationToken);

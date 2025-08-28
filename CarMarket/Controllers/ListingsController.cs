@@ -1,4 +1,5 @@
 ﻿using CarMarket.Models.Listing;
+using CarMarket.Services.Filters;
 using CarMarket.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,15 +20,36 @@ namespace CarMarket.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Listings(int? minPrice = null, int? maxPrice = null, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Listings(
+            int? minPrice = null,
+            int? maxPrice = null,
+            int? minMileage = null,
+            int? maxMileage = null,
+            int? minYear = null,
+            int? maxYear = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var viewListings = await _listingService.GetAllListingsAsync(minPrice, maxPrice, userId, cancellationToken);
+
+                var filters = new List<IListingFilter>
+                {
+                    new PriceFilter(minPrice, maxPrice),
+                    new MileageFilter(minMileage, maxMileage),
+                    new YearFilter(minYear, maxYear),
+                    new ExcludeUserFilter(userId)
+                };
+
+                var viewListings = await _listingService.GetListingsAsync(filters, cancellationToken);
 
                 ViewBag.MinPrice = minPrice;
                 ViewBag.MaxPrice = maxPrice;
+                ViewBag.MinMileage = minMileage;
+                ViewBag.MaxMileage = maxMileage;
+                ViewBag.MinYear = minYear;
+                ViewBag.MaxYear = maxYear;
+
                 return View(viewListings);
             }
             catch (OperationCanceledException)
@@ -224,7 +246,7 @@ namespace CarMarket.Controllers
                     IsRegistrated = listing.IsRegistrated,
                     IsCrashed = listing.IsCrashed,
                     IsPledged = listing.IsPledged,
-                    MileAge = listing.MileAge,
+                    Mileage = listing.Mileage,
                     Price = listing.Price
                 });
             }

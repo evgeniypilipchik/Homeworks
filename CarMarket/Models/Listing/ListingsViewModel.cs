@@ -13,8 +13,8 @@ namespace CarMarket.Models.Listing
         [DisplayFormat(NullDisplayText = "No information")]
         public int? Year { get; set; }
 
-        [Display(Name = "Mile age, km")]
-        public int MileAge { get; set; }
+        [Display(Name = "Mileage, km")]
+        public int Mileage { get; set; }
 
         [Display(Name = "Price, $")]
         public int Price { get; set; }

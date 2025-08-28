@@ -39,7 +39,7 @@ namespace CarMarket.Data.Models
         public bool? IsPledged { get; set; }
 
         [Required]
-        public int MileAge { get; set; }
+        public int Mileage { get; set; }
 
         [Required]
         public int Price { get; set; }

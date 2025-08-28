@@ -14,14 +14,22 @@
     </p>
 }
 
-<div class="price-filter">
+<div class="filters">
     <form method="get" class="filter-form">
-        <input type="number" name="minPrice" placeholder="Min price ($)" 
+        <input type="number" name="minPrice" placeholder="Min price ($)"
                value="@ViewBag.MinPrice" class="input-simple">
         <input type="number" name="maxPrice" placeholder="Max price ($)"
                value="@ViewBag.MaxPrice" class="input-simple">
+        <input type="number" name="minMileage" placeholder="Min mileage (km)"
+               value="@ViewBag.MinMileage" class="input-simple">
+        <input type="number" name="maxMileage" placeholder="Max mileage (km)"
+               value="@ViewBag.MaxMileage" class="input-simple">
+        <input type="number" name="minYear" placeholder="Min year"
+               value="@ViewBag.MinYear" class="input-simple">
+        <input type="number" name="maxYear" placeholder="Max year"
+               value="@ViewBag.MaxYear" class="input-simple">
         <button type="submit" class="btn-simple">Apply</button>
-        <button type="button" onclick="window.location.href='@Url.Action("Listings")'"class="btn-simple btn-reset">Reset</button>
+        <button type="button" onclick="window.location.href='@Url.Action("Listings")'" class="btn-simple btn-reset">Reset</button>
     </form>
 </div>
 
@@ -38,7 +46,7 @@
                 @Html.DisplayNameFor(model => model.Year)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MileAge)
+                @Html.DisplayNameFor(model => model.Mileage)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
@@ -59,7 +67,7 @@
                 @Html.DisplayFor(modelItem => item.Year)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MileAge)
+                @Html.DisplayFor(modelItem => item.Mileage)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)

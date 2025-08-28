@@ -3,6 +3,7 @@ using CarMarket.Data.Models;
 using CarMarket.Services;
 using CarMarket.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace CarMarket
 {
@@ -46,7 +47,7 @@ namespace CarMarket
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=Listings}/{action=Listings}/{id?}")
                 .WithStaticAssets();
             app.MapRazorPages()
                .WithStaticAssets();

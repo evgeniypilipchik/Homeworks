@@ -20,18 +20,14 @@ namespace CarMarket.Services
             _environment = environment;
         }
 
-        public async Task<List<ListingsViewModel>> GetAllListingsAsync(int? minPrice, int? maxPrice, string? excludeUserId, CancellationToken cancellationToken)
+        public async Task<List<ListingsViewModel>> GetListingsAsync(IEnumerable<IListingFilter> filters, CancellationToken cancellationToken = default)
         {
             var query = _context.Listings.AsQueryable();
 
-            if (minPrice.HasValue)
-                query = query.Where(l => l.Price >= minPrice.Value);
-
-            if (maxPrice.HasValue)
-                query = query.Where(l => l.Price <= maxPrice.Value);
-
-            if (!string.IsNullOrEmpty(excludeUserId))
-                query = query.Where(l => l.ApplicationUserId != excludeUserId);
+            foreach (var filter in filters)
+            {
+                query = filter.Apply(query);
+            }
 
             var listings = await query.ToListAsync(cancellationToken);
 
@@ -41,7 +37,7 @@ namespace CarMarket.Services
                 Brand = l.Brand,
                 Model = l.Model,
                 Year = l.Year,
-                MileAge = l.MileAge,
+                Mileage = l.Mileage,
                 Price = l.Price
             }).ToList();
         }
@@ -96,7 +92,7 @@ namespace CarMarket.Services
                 IsRegistrated = model.IsRegistrated,
                 IsCrashed = model.IsCrashed,
                 IsPledged = model.IsPledged,
-                MileAge = model.MileAge,
+                Mileage = model.Mileage,
                 Price = model.Price,
                 ApplicationUserId = userId
             };
@@ -124,7 +120,7 @@ namespace CarMarket.Services
             listing.IsRegistrated = model.IsRegistrated;
             listing.IsCrashed = model.IsCrashed;
             listing.IsPledged = model.IsPledged;
-            listing.MileAge = model.MileAge;
+            listing.Mileage = model.Mileage;
             listing.Price = model.Price;
 
             _context.Listings.Update(listing);
@@ -155,7 +151,7 @@ namespace CarMarket.Services
                 Brand = l.Brand,
                 Model = l.Model,
                 Year = l.Year,
-                MileAge = l.MileAge,
+                Mileage = l.Mileage,
                 Price = l.Price
             }).ToList();
         }
@@ -174,7 +170,7 @@ namespace CarMarket.Services
                 Brand = l.Brand,
                 Model = l.Model,
                 Year = l.Year,
-                MileAge = l.MileAge,
+                Mileage = l.Mileage,
                 Price = l.Price,
                 IsFavorite = true
             }).ToList();
@@ -235,7 +231,7 @@ namespace CarMarket.Services
                 IsRegistrated = listing.IsRegistrated,
                 IsCrashed = listing.IsCrashed,
                 IsPledged = listing.IsPledged,
-                MileAge = listing.MileAge,
+                Mileage = listing.Mileage,
                 Price = listing.Price,
                 UserName = listing.ApplicationUser.UserName.Split('@')[0],
                 Email = listing.ApplicationUser.Email,
