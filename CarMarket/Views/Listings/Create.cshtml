@@ -1,0 +1,165 @@
+﻿@using CarMarket.Models.Listing
+@model CreateViewModel
+
+@{
+    ViewData["Title"] = "Create listing";
+}
+
+<h1>Create listing</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Vin" class="control-label"></label>
+                <input asp-for="Vin" class="form-control" />
+                <span asp-validation-for="Vin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <select asp-for="Year" class="form-control">
+                    <option value="">No information</option>
+                    @for (int year = @DateTime.Now.Year; year >= 1920; year--)
+                    {
+                        <option value="@year">@year</option>
+                    }
+                </select>
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Generation" class="control-label"></label>
+                <select asp-for="Generation" class="form-control">
+                    <option value="">No information</option>
+                    @for (int generation = 20; generation >= 1; generation--)
+                    {
+                        <option value="@generation">@generation</option>
+                    }
+                </select>
+                <span asp-validation-for="Generation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <select asp-for="Type" class="form-control">
+                    <option value="">No information</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Hatch">Hatch</option>
+                    <option value="Coupe">Coupe</option>
+                    <option value="Convertible">Convertible</option>
+                    <option value="Wagon">Wagon</option>
+                    <option value="Roadster">Roadster</option>
+                    <option value="Pickup">Pickup</option>
+                </select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriveType" class="control-label"></label>
+                <select asp-for="DriveType" class="form-control">
+                    <option value="">No information</option>
+                    <option value="Front">Front</option>
+                    <option value="Rear">Rear</option>
+                    <option value="Full">Full</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FuelType" class="control-label"></label>
+                <select asp-for="FuelType" class="form-control">
+                    <option value="">No information</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineVolume" class="control-label"></label>
+                <input asp-for="EngineVolume" type="number" step="0.1" min="0.5" max="10.0" class="form-control" placeholder="No information" />
+                <span asp-validation-for="EngineVolume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GearType" class="control-label"></label>
+                <select asp-for="GearType" class="form-control">
+                    <option value="">No information</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select>
+                <span asp-validation-for="GearType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <select asp-for="Color" class="form-control">
+                    <option value="">No information</option>
+                    <option value="Black">Black</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Brown">Brown</option>
+                    <option value="Green">Green</option>
+                    <option value="Gray">Gray</option>
+                    <option value="Multicolor">Multicolor</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Red">Red</option>
+                    <option value="Silver">Silver</option>
+                    <option value="White">White</option>
+                    <option value="Yellow">Yellow</option>
+                </select>
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsRegistrated" class="control-label"></label>
+                <select asp-for="IsRegistrated" class="form-control">
+                    <option value="">No information</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <span asp-validation-for="IsRegistrated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsCrashed" class="control-label"></label>
+                <select asp-for="IsCrashed" class="form-control">
+                    <option value="">No information</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <span asp-validation-for="IsCrashed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsPledged" class="control-label"></label>
+                <select asp-for="IsPledged" class="form-control">
+                    <option value="">No information</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <span asp-validation-for="IsPledged" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mileage" class="control-label"></label>
+                <input asp-for="Mileage" class="form-control" />
+                <span asp-validation-for="Mileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Listings" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

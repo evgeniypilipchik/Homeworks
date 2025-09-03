@@ -1,0 +1,184 @@
+﻿@model CarMarket.Models.Listing.CreateViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Vin" class="control-label"></label>
+                <input asp-for="Vin" class="form-control" value="@Model.Vin" />
+                <span asp-validation-for="Vin" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" value="@Model.Brand" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" value="@Model.Model" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <select asp-for="Year" class="form-control">
+                    <option value="">No information</option>
+                    @for (int year = 2025; year >= 1920; year--)
+                    {
+                        <option value="@year" selected="@(year == Model.Year)">@year</option>
+                    }
+                </select>
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Generation" class="control-label"></label>
+                <select asp-for="Generation" class="form-control">
+                    <option value="">No information</option>
+                    @for (int gen = 30; gen >= 1; gen--)
+                    {
+                        <option value="@gen" selected="@(gen == Model.Generation)">@gen</option>
+                    }
+                </select>
+                <span asp-validation-for="Generation" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <select asp-for="Type" class="form-control">
+                    <option value="">No information</option>
+                    <option value="Sedan" selected="@(Model.Type == "Sedan")">Sedan</option>
+                    <option value="SUV" selected="@(Model.Type == "SUV")">SUV</option>
+                    <option value="Hatch" selected="@(Model.Type == "Hatch")">Hatch</option>
+                    <option value="Coupe" selected="@(Model.Type == "Coupe")">Coupe</option>
+                    <option value="Convertible" selected="@(Model.Type == "Convertible")">Convertible</option>
+                    <option value="Wagon" selected="@(Model.Type == "Wagon")">Wagon</option>
+                    <option value="Roadster" selected="@(Model.Type == "Roadster")">Roadster</option>
+                    <option value="Pickup" selected="@(Model.Type == "Pickup")">Pickup</option>
+                </select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DriveType" class="control-label"></label>
+                <select asp-for="DriveType" class="form-control">
+                    <option value="">No information</option>
+                    <option value="Front" selected="@(Model.DriveType == "Front")">Front</option>
+                    <option value="Rear" selected="@(Model.DriveType == "Rear")">Rear</option>
+                    <option value="Full" selected="@(Model.DriveType == "Full")">Full</option>
+                </select>
+                <span asp-validation-for="DriveType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FuelType" class="control-label"></label>
+                <select asp-for="FuelType" class="form-control">
+                    <option value="">No information</option>
+                    <option value="Petrol" selected="@(Model.FuelType == "Petrol")">Petrol</option>
+                    <option value="Diesel" selected="@(Model.FuelType == "Diesel")">Diesel</option>
+                </select>
+                <span asp-validation-for="FuelType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EngineVolume" class="control-label"></label>
+                <input asp-for="EngineVolume" type="number" step="0.1" min="0.5" max="10.0" class="form-control" />
+                <span asp-validation-for="EngineVolume" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="GearType" class="control-label"></label>
+                <select asp-for="GearType" class="form-control">
+                    <option value="">No information</option>
+                    <option value="Manual" selected="@(Model.GearType == "Manual")">Manual</option>
+                    <option value="Automatic" selected="@(Model.GearType == "Automatic")">Automatic</option>
+                </select>
+                <span asp-validation-for="GearType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <select asp-for="Color" class="form-control">
+                    <option value="">No information</option>
+                    <option value="Black" selected="@(Model.Color == "Black")">Black</option>
+                    <option value="Blue" selected="@(Model.Color == "Blue")">Blue</option>
+                    <option value="Brown" selected="@(Model.Color == "Brown")">Brown</option>
+                    <option value="Green" selected="@(Model.Color == "Green")">Green</option>
+                    <option value="Gray" selected="@(Model.Color == "Gray")">Gray</option>
+                    <option value="Multicolor" selected="@(Model.Color == "Multicolor")">Multicolor</option>
+                    <option value="Orange" selected="@(Model.Color == "Orange")">Orange</option>
+                    <option value="Pink" selected="@(Model.Color == "Pink")">Pink</option>
+                    <option value="Purple" selected="@(Model.Color == "Purple")">Purple</option>
+                    <option value="Red" selected="@(Model.Color == "Red")">Red</option>
+                    <option value="Silver" selected="@(Model.Color == "Silver")">Silver</option>
+                    <option value="White" selected="@(Model.Color == "White")">White</option>
+                    <option value="Yellow" selected="@(Model.Color == "Yellow")">Yellow</option>
+                </select>
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IsRegistrated" class="control-label"></label>
+                <select asp-for="IsRegistrated" class="form-control">
+                    <option value="">No information</option>
+                    <option value="true" selected="@(Model.IsRegistrated == true)">Yes</option>
+                    <option value="false" selected="@(Model.IsRegistrated == false)">No</option>
+                </select>
+                <span asp-validation-for="IsRegistrated" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IsCrashed" class="control-label"></label>
+                <select asp-for="IsCrashed" class="form-control">
+                    <option value="">No information</option>
+                    <option value="true" selected="@(Model.IsCrashed == true)">Yes</option>
+                    <option value="false" selected="@(Model.IsCrashed == false)">No</option>
+                </select>
+                <span asp-validation-for="IsCrashed" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IsPledged" class="control-label"></label>
+                <select asp-for="IsPledged" class="form-control">
+                    <option value="">No information</option>
+                    <option value="true" selected="@(Model.IsPledged == true)">Yes</option>
+                    <option value="false" selected="@(Model.IsPledged == false)">No</option>
+                </select>
+                <span asp-validation-for="IsPledged" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Mileage" class="control-label"></label>
+                <input asp-for="Mileage" class="form-control"/>
+                <span asp-validation-for="Mileage" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control"/>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+                <a asp-action="MyListings" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
